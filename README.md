@@ -1,5 +1,5 @@
 # Ecommerce_Django
-  Basic Ecommerce Website built with django. 
+  Not a fully-fledged project but it was built while learning django.
 
 ## Home Page
 ![alt text](media/Images/home.PNG)
