@@ -1,0 +1,220 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+	<!-- top Products -->
+	<div class="ads-grid_shop">
+		<div class="shop_inner_inf">
+			{% for item in view_items %}
+			<div class="col-md-4 single-right-left ">
+				<div class="grid images_3_of_2">
+					<div class="flexslider">
+
+						<ul class="slides">
+							for item in view_item
+							<li data-thumb="{{item.image}}">
+								<div class="thumb-image"> <img src="{{item.image.url}}" data-imagezoom="true" class="img-responsive"> </div>
+							</li>
+
+						</ul>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-8 single-right-left simpleCart_shelfItem">
+				<h3>{{item.title}}</h3>
+				{% if item.discounted_price > 0 %}
+				<p><span class="item_price">Rs.{{item.discounted_price}}</span>
+					<del>Rs.{{item.price}}</del>
+					<h5>{{item.stock}}</h5>
+				</p>
+				{% else %}
+				<p><span class="item_price">Rs.{{item.price}}</span>
+					<h5>{{item.stock}}</h5>
+				</p>
+				{% endif %}
+				<div class="rating1">
+					<ul class="stars">
+						<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+						<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+						<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+						<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
+						<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+					</ul>
+				</div>
+				<div class="description">
+					<h5>{{item.description}}</h5>
+				</div>
+				<div class="occasion-cart">
+					<div class="shoe single-item single_page_b">
+
+<!--						</form>-->
+						<form action="{% url 'home:add_to_cart' %}" method="POST">
+													{% csrf_token %}
+													<input type="hidden" name="slug" value="{{item.slug}}">
+													<input type="hidden" name="title" value="{{item.title}}">
+													<input type="hidden" name="image" value="{{item.image.url}}">
+													<input type="hidden" name="description" value="{{item.description}}">
+													<input type="hidden" name="quantity" value="{{item.quantity}}">
+													{% if item.discounted_price > 0 %}
+													<input type="hidden" name="price" value="{{item.discounted_price}}">
+													{% else %}
+													<input type="hidden" name="price" value="{{item.price}}">
+													{% endif %}
+													<input type="submit" name="submit" value="Add to cart" class="button add">
+													<a href="/" data-toggle="modal" data-target="#myModal1"></a>
+												</form>
+
+					</div>
+
+				</div>
+				<ul class="social-nav model-3d-0 footer-social social single_page">
+					<li class="share">Share On : </li>
+					<li>
+						<a href="#" class="facebook">
+							<div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+							<div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="twitter">
+							<div class="front"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+							<div class="back"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="instagram">
+							<div class="front"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+							<div class="back"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="pinterest">
+							<div class="front"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
+							<div class="back"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
+						</a>
+					</li>
+				</ul>
+
+			</div>
+			<div class="clearfix"> </div>
+			<!--/tabs-->
+			{% endfor %}
+			<!--//tabs-->
+			<!-- /new_arrivals -->
+			<div class="new_arrivals">
+				<h3>Featured Products</h3>
+				<!-- /womens -->
+				{% for feature in feature_product %}
+				<div class="col-md-3 product-men women_two">
+					<div class="product-shoe-info shoe">
+						<div class="men-pro-item">
+							<div class="men-thumb-item">
+								<img src="{{feature.image.url}}" alt="">
+								<div class="men-cart-pro">
+									<div class="inner-men-cart-pro">
+										<a href="{{feature.get_item_url}}" class="link-product-add-cart">Quick View</a>
+									</div>
+								</div>
+								<span class="product-new-top">{{feature.labels}}</span>
+							</div>
+							<div class="item-info-product">
+								<h4>
+									<a href="single.html">{{feature.title}} </a>
+								</h4>
+								<div class="info-product-price">
+									<div class="grid_meta">
+										<div class="product_price">
+											<div class="grid-price ">
+												<span class="money ">{{feature.price}}</span>
+											</div>
+										</div>
+										<ul class="stars">
+											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+											<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
+										</ul>
+									</div>
+									<div class="shoe single-item hvr-outline-out">
+											<form action="{% url 'home:add_to_cart' %}" method="POST">
+													{% csrf_token %}
+													<input type="hidden" name="slug" value="{{feature.slug}}">
+													<input type="hidden" name="title" value="{{feature.title}}">
+													<input type="hidden" name="image" value="{{feature.image.url}}">
+													<input type="hidden" name="description" value="{{feature.description}}">
+													<input type="hidden" name="quantity" value="{{feature.quantity}}">
+													{% if item.discounted_price > 0 %}
+													<input type="hidden" name="price" value="{{feature.discounted_price}}">
+													{% else %}
+													<input type="hidden" name="price" value="{{feature.price}}">
+													{% endif %}
+													<button type="submit" class="shoe-cart pshoe-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
+<!--													<a href="#" data-toggle="modal" data-target="#myModal1"></a>-->
+												</form>
+
+									</div>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+
+				<!-- //womens -->
+				<div class="clearfix"></div>
+			</div>
+			<!--//new_arrivals-->
+
+
+		</div>
+	</div>
+	<!-- //top products -->
+	<div class="mid_slider_w3lsagile">
+		<div class="col-md-3 mid_slider_text">
+			<h5>Some More Shoes</h5>
+		</div>
+		<div class="col-md-9 mid_slider_info">
+			<div id="myCarousel" class="carousel slide" data-ride="carousel">
+				<!-- Indicators -->
+				<ol class="carousel-indicators">
+					{% for mover in movers %}
+					<li data-target="#myCarousel" data-slide-to="{{mover.rank}}" class="{{mover.status}}"></li>
+
+					{% endfor %}
+
+				</ol>
+				<div class="carousel-inner" role="listbox">
+					{% for mover in movers %}
+					<div class="item {{mover.status}}">
+						<div class="row">
+							{% for mover in movers %}
+							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
+								<div class="thumbnail"><img src="{{mover.image.url}}" alt="Image" style="max-width:100%;"></div>
+							</div>
+
+							{% endfor %}
+						</div>
+					</div>
+					{% endfor %}
+
+				</div>
+				<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+			<span class="fa fa-chevron-left" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+				<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+			<span class="fa fa-chevron-right" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+				<!-- The Modal -->
+
+			</div>
+		</div>
+
+		<div class="clearfix"> </div>
+	</div>
+{% endblock %}

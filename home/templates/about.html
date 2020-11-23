@@ -1,0 +1,187 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+	<!-- //banner -->
+	<!-- top Products -->
+	<div class="ads-grid_shop">
+		<div class="shop_inner_inf">
+			<h3 class="head">About Us</h3>
+			<p class="head_para">Add Some Description</p>
+			{% for abt in about %}
+			<div class="inner_section_w3ls">
+				<div class="col-md-6 news-left">
+					<img src="{{abt.image.url}}" alt=" " class="img-responsive">
+				</div>
+				<div class="col-md-6 news-right">
+					<h4>Welcome to our Downy Shoes</h4>
+					<p class="sub_p">{{abt.detail}}
+					</p>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			{% endfor %}
+		</div>
+
+	</div>
+	<div class="mid_services">
+		<div class="col-md-6 according_inner_grids">
+			<h3 class="heading two">Who We Are</h3>
+			<div class="according_info">
+				<div class="panel-group about_panel" id="accordion" role="tablist" aria-multiselectable="true">
+					{% for abt in about %}
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingOne">
+							<h4 class="panel-title asd">
+								<a class="pa_italic" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true"
+								    aria-controls="collapseOne">
+							  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><i class="glyphicon glyphicon-minus" aria-hidden="true"></i>{{abt.question}}
+							</a>
+							</h4>
+						</div>
+						<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+							<div class="panel-body panel_text">
+								{{abt.answer}}
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+
+		</div>
+		<div class="col-md-6 mid_services_img">
+			<div class="bar-grids">
+				<h3 class="heading two three">Our Skills</h3>
+				<div class="skill_info">
+					<h6>Development<span> 95% </span></h6>
+					<div class="progress">
+						<div class="progress-bar progress-bar-striped active" style="width: 95%">
+						</div>
+					</div>
+					<h6>Pricing<span> 85% </span></h6>
+					<div class="progress">
+						<div class="progress-bar progress-bar-striped active" style="width: 85%">
+						</div>
+					</div>
+					<h6>Production <span>90% </span></h6>
+					<div class="progress">
+						<div class="progress-bar progress-bar-striped active" style="width: 90%">
+						</div>
+					</div>
+					<h6>Advertising <span>86% </span></h6>
+					<div class="progress prgs-last">
+						<div class="progress-bar progress-bar-striped active" style="width: 86%">
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="clearfix"> </div>
+	</div>
+	<!-- /Properties -->
+	<div class="mid_slider_w3lsagile">
+		<div class="col-md-3 mid_slider_text">
+			<h5>Some More Shoes</h5>
+		</div>
+		<div class="col-md-9 mid_slider_info">
+			<div id="myCarousel" class="carousel slide" data-ride="carousel">
+				<!-- Indicators -->
+				<ol class="carousel-indicators">
+					{% for mover in movers %}
+					<li data-target="#myCarousel" data-slide-to="{{mover.rank}}" class="{{mover.status}}"></li>
+<!--					<li data-target="#myCarousel" data-slide-to="1" class=""></li>-->
+<!--					<li data-target="#myCarousel" data-slide-to="2" class=""></li>-->
+<!--					<li data-target="#myCarousel" data-slide-to="3" class=""></li>-->
+					{% endfor %}
+
+				</ol>
+				<div class="carousel-inner" role="listbox">
+					{% for mover in movers %}
+					<div class="item {{mover.status}}">
+						<div class="row">
+							{% for mover in movers %}
+							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
+								<div class="thumbnail"><img src="{{mover.image.url}}" alt="Image" style="max-width:100%;"></div>
+							</div>
+<!--							<div class="col-md-3 col-sm-3 col-xs-3 slidering">-->
+<!--								<div class="thumbnail"><img src="{% static 'images/g2.jpg' %}" alt="Image" style="max-width:100%;"></div>-->
+<!--							</div>-->
+<!--							<div class="col-md-3 col-sm-3 col-xs-3 slidering">-->
+<!--								<div class="thumbnail"><img src="{% static 'images/g3.jpg' %}" alt="Image" style="max-width:100%;"></div>-->
+<!--							</div>-->
+<!--							<div class="col-md-3 col-sm-3 col-xs-3 slidering">-->
+<!--								<div class="thumbnail"><img src="{% static 'images/g4.jpg' %}" alt="Image" style="max-width:100%;"></div>-->
+<!--							</div>-->
+							{% endfor %}
+						</div>
+					</div>
+					{% endfor %}
+<!--					<div class="item">-->
+<!--						<div class="row">-->
+<!--							<div class="col-md-3 col-sm-3 col-xs-3 slidering">-->
+<!--								<div class="thumbnail"><img src="{% static 'images/g5.jpg' %}" alt="Image" style="max-width:100%;"></div>-->
+<!--							</div>-->
+<!--							<div class="col-md-3 col-sm-3 col-xs-3 slidering">-->
+<!--								<div class="thumbnail"><img src="{% static 'images/g6.jpg' %}" alt="Image" style="max-width:100%;"></div>-->
+<!--							</div>-->
+<!--							<div class="col-md-3 col-sm-3 col-xs-3 slidering">-->
+<!--								<div class="thumbnail"><img src="{% static 'images/g2.jpg' %}" alt="Image" style="max-width:100%;"></div>-->
+<!--							</div>-->
+<!--							<div class="col-md-3 col-sm-3 col-xs-3 slidering">-->
+<!--								<div class="thumbnail"><img src="{% static 'images/g1.jpg' %}" alt="Image" style="max-width:100%;"></div>-->
+<!--							</div>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="item">-->
+<!--						<div class="row">-->
+<!--							<div class="col-md-3 col-sm-3 col-xs-3 slidering">-->
+<!--								<div class="thumbnail"><img src="{% static 'images/g1.jpg' %}" alt="Image" style="max-width:100%;"></div>-->
+<!--							</div>-->
+<!--							<div class="col-md-3 col-sm-3 col-xs-3 slidering">-->
+<!--								<div class="thumbnail"><img src="{% static 'images/g2.jpg' %}" alt="Image" style="max-width:100%;"></div>-->
+<!--							</div>-->
+<!--							<div class="col-md-3 col-sm-3 col-xs-3 slidering">-->
+<!--								<div class="thumbnail"><img src="{% static 'images/g3.jpg' %}" alt="Image" style="max-width:100%;"></div>-->
+<!--							</div>-->
+<!--							<div class="col-md-3 col-sm-3 col-xs-3 slidering">-->
+<!--								<div class="thumbnail"><img src="{% static 'images/g4.jpg' %}" alt="Image" style="max-width:100%;"></div>-->
+<!--							</div>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="item">-->
+<!--						<div class="row">-->
+<!--							<div class="col-md-3 col-sm-3 col-xs-3 slidering">-->
+<!--								<div class="thumbnail"><img src="{% static 'images/g1.jpg' %}" alt="Image" style="max-width:100%;"></div>-->
+<!--							</div>-->
+<!--							<div class="col-md-3 col-sm-3 col-xs-3 slidering">-->
+<!--								<div class="thumbnail"><img src="{% static 'images/g2.jpg' %}" alt="Image" style="max-width:100%;"></div>-->
+<!--							</div>-->
+<!--							<div class="col-md-3 col-sm-3 col-xs-3 slidering">-->
+<!--								<div class="thumbnail"><img src="{% static 'images/g3.jpg' %}" alt="Image" style="max-width:100%;"></div>-->
+<!--							</div>-->
+<!--							<div class="col-md-3 col-sm-3 col-xs-3 slidering">-->
+<!--								<div class="thumbnail"><img src="{% static 'images/g4.jpg' %}" alt="Image" style="max-width:100%;"></div>-->
+<!--							</div>-->
+<!--						</div>-->
+<!--					</div>-->
+				</div>
+				<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+			<span class="fa fa-chevron-left" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+				<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+			<span class="fa fa-chevron-right" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+				<!-- The Modal -->
+
+			</div>
+		</div>
+
+		<div class="clearfix"> </div>
+	</div>
+	<!--//banner -->
+
+{% endblock %}

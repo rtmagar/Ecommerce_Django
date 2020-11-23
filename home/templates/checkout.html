@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+	    button{
+	    background-color: green;
+
+	    }
+</style>
+{% if messages %}
+	{% for message in messages %}
+	<h2> {{message}} </h2>
+	{% endfor %}
+{% endif %}
+
+<div class="col-md-5 address_form">
+						<h4 style="text-align:center;">Billing Details</h4>
+
+						<form action="{% url 'home:order' %}" method="POST" class="">
+							<section class="creditly-wrapper wrapper">
+								{% csrf_token %}
+								<div class="information-wrapper">
+									<div class="first-row form-group">
+										<div class="controls">
+											<label class="control-label">Full name: </label>
+											<input class="billing-address-name form-control" type="text" name="full_name" placeholder="Full name" required="">
+										</div>
+										<div class="card_number_grids">
+											<div class="card_number_grid_left">
+												<div class="controls">
+													<label class="control-label">Mobile number:</label>
+													<input class="form-control" type="text" name="telephone" placeholder="Mobile number" required="">
+												</div>
+											</div>
+											<div class="card_number_grid_right">
+												<div class="controls">
+													<label class="control-label">Landmark: </label>
+													<input class="form-control" type="text" name="landmark" placeholder="Landmark" required="">
+												</div>
+											</div>
+											<div class="clear"> </div>
+										</div>
+										<div class="controls">
+											<label class="control-label">Town/City: </label>
+											<input class="form-control" type="text" name="town" placeholder="Town/City" required="">
+										</div>
+										<div class="controls">
+											<label class="control-label">Address type: </label>
+											<input class="form-control" type="text" name="address" placeholder="Address" required="">
+										</div>
+									</div>
+									<button class="submit check_out">Delivery to this Address</button>
+								</div>
+							</section>
+						</form>
+					</div>
+
+<div class="clearfix"> </div>
+
+
+<div class="clearfix"></div>
+
+
+{% endblock %}
