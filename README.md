@@ -11,6 +11,6 @@
 
 ## Run
 `python manage.py runserver`
-## Template
-[Ecommerce](https://w3layouts.com/downy-shoes-ecommerce-category-bootstrap-responsive-web-template/)
+
+
 
